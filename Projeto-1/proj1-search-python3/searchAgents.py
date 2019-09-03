@@ -342,6 +342,15 @@ class CornersProblem(search.SearchProblem):
             if self.walls[x][y]: return 999999
         return len(actions)
 
+def chebyshevHeuristic(position, problem, info={}):
+    xy1 = position
+    xy2 = problem.goal
+    distx = abs(xy1[0] - xy2[0])
+    disty = abs(xy1[1] - xy2[1])
+    if distx >= disty:
+        return distx
+    else:
+        return disty
 
 def cornersHeuristic(state, problem):
     """

@@ -87,7 +87,70 @@ def depthFirstSearch(problem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    """util.raiseNotDefined()"""
+    #importando a pilha para o algoritmo
+    from util import Stack
+    #estado atual
+    atual = problem.getStartState()
+    #lista do possivel caminho, um dicionario composto com as seguintes chaves "Acao", Anterior", "Atual" e se ja foi ou nao percorrido
+    possiveisnos = []
+    possiveisnos.append({"Acao": None, "Anterior": None, "Atual": atual, "Percorrido": False})
+
+    #Pilha dos estados para realizar o algoritmo de busca em profundidade
+    pilha = Stack()
+    pilha.push(atual)
+    #lista de item explorados
+    explorado = []
+    #guarda o estado anterior 
+    anterior = None
+    while not pilha.isEmpty():
+        #atualiza o estado
+        atual = pilha.pop()
+        #verifica se o estado atual eh o final, caso seja ele para o loop
+        if problem.isGoalState(atual):
+            break
+        
+        explorado.append(atual)
+
+        for node in possiveisnos:
+            if node['Atual'] == atual:
+                node["Percorrido"] = True
+
+
+
+        #atualiza o no anterior
+        anterior = atual
+
+        sucessores = problem.getSuccessors(atual)
+        #itera os sucessores e verifica se o mesmo ja foi explorado alguma vez, caso contrario ele adiciona o dicionario na lista de possiveis nos
+        for sucessor in sucessores:
+            if sucessor[0] not in explorado:
+                possiveisnos.append({"Acao": sucessor[1], "Anterior": atual, "Atual": sucessor[0], "Percorrido": False})
+                pilha.push(sucessor[0])
+
+        
+    
+    
+    path = []
+    #ultimo elemento dos possiveis caminhos (onde esta o ponto)
+    elemento = possiveisnos[-1]
+    while elemento:
+        #chega se o mesmo eh nulo, se for ele so para a iteracao
+        if not elemento["Anterior"]:
+            break
+        #insere no comeco da lista a acao
+        path.insert(0, elemento['Acao'])
+        #escolhe o procimo caminho a ser escolhido, caso contrario ele eh vazio
+        elemento = next((item for item in possiveisnos if item["Atual"] == elemento["Anterior"] and item["Percorrido"] ), None)
+
+
+    
+    print("path: ", path)
+    
+    return path
+
+
+    
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
