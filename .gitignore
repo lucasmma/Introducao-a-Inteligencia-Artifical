@@ -8,7 +8,7 @@
 *.so
 *.ipch
 *.d
-*.pyc
+*.cpython-36.pyc
 dep/*
 bin/*
 
