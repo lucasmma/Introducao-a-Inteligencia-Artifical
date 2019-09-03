@@ -40,6 +40,7 @@ from game import Actions
 import util
 import time
 import search
+import math
 
 class GoWestAgent(Agent):
     "An agent that goes West until it can't."
@@ -261,6 +262,17 @@ def euclideanHeuristic(position, problem, info={}):
     xy1 = position
     xy2 = problem.goal
     return ( (xy1[0] - xy2[0]) ** 2 + (xy1[1] - xy2[1]) ** 2 ) ** 0.5
+
+def chebyshevHeuristic(position, problem, info={}):
+    xy1 = position
+    xy2 = problem.goal
+    distx = abs(xy1[0] - xy2[0])
+    disty = abs(xy1[1] - xy2[1])
+    if distx >= disty:
+        return distx
+    else:
+        return disty
+
 
 #####################################################
 # This portion is incomplete.  Time to write code!  #
