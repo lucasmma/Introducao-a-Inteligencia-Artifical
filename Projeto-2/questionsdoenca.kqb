@@ -1,0 +1,126 @@
+
+#Perguntas de Sim/Não
+
+edemadaarticulacaopergunta($ans)
+   Foi apresentado edema da articulação?
+    ---
+    $ans = yn
+
+conjuntivitepergunta($ans)
+   Foi apresentado conjuntivite?
+    ---
+    $ans = yn
+
+acometimentoneurologicopergunta($ans)
+   Foi apresentado Acometimento Neurologico?
+    ---
+    $ans = yn
+
+#Perguntas de Alto/Medio/Baixo
+
+frequenciadormusculospergunta($ans)
+    Com que frequencia você sente dor nos musculos?
+    ---
+    $ans = select_1
+        1: Alta
+           
+        2: Media
+           
+        3: Baixa
+
+intensidadedormusculospergunta($ans)
+    Qual intensidade da dor nos musculos?
+    ---
+    $ans = select_1
+        1: Alta
+           
+        2: Media
+           
+        3: Baixa
+
+
+intensidadedorarticularpergunta($ans)
+    Com qual intensidade voce sente dores articulares?
+    ---
+    $ans = select_1
+        1: Alta
+           
+        2: Media
+           
+        3: Baixa
+           
+
+frequenciadorarticulacaopergunta($ans)
+    Com que frequencia voce sente dor nas suas articulações?
+    ---
+    $ans = select_1
+        1: Alta
+           
+        2: Media
+           
+        3: Baixa
+           
+
+dordecabecapergunta($ans)
+   Como você descreveria a sua dor de cabeça?
+    ---
+    $ans = select_1
+        1: Intensa
+           
+        2: Moderada
+           
+
+coceirapergunta($ans)
+   Como você descreveria a sua coceira?
+    ---
+    $ans = select_1
+        1: Intensa/Moderada
+           
+        2: Leve
+           
+
+hipertrofiaganglionarpergunta($ans)
+    Com que frequencia ocorreu hipertrofia ganglionar?
+    ---
+    $ans = select_1
+        1: Intensa
+           
+        2: Moderada
+           
+        3: Leve
+           
+
+discrasiahemorragicapergunta($ans)
+    Com que frequencia ocorreu discrasia hemorragica?
+    ---
+    $ans = select_1
+        1: Moderada
+           
+        2: Leve
+           
+        3: Nenhuma
+           
+
+#Outras Perguntas
+
+febrepergunta($ans)
+    Com qual das três opções você melhor descreveria sua febre?
+    ---
+    $ans = select_1
+        1: Acima de 38ºC (4 a 7 dias)
+           
+        2: Sem febre ou subfebril 38ºC (1-2 dias subfebril)
+           
+        3: Febre alta > 38ºC (2-3 dias)
+           
+
+manchapergunta($ans)
+    Em que dia começaram as manchas na pele?
+    ---
+    $ans = select_1
+        1: A partir do 4º
+           
+        2: Do 1º ao 2º
+           
+        3: Do 2º ao 5º
+           

@@ -1,0 +1,326 @@
+knows_pattern_matching
+    use knows_pattern_matching()
+    when
+        python engine.get_ke('questionsdoenca', 'discrasiahemorragicapergunta').reset()
+        dicrisia()
+
+
+# Diagnostico para Zika
+dicrisia
+    use dicrisia()
+    when
+        questionsdoenca.discrasiahemorragicapergunta(3)
+        python engine.get_ke('questionsdoenca', 'coceirapergunta').reset()
+        coceira()
+
+coceira
+    use coceira()
+    when
+        questionsdoenca.coceirapergunta(1)
+        python engine.get_ke('questionsdoenca', 'hipertrofiaganglionarpergunta').reset()
+        parteintensa()
+
+coceira1
+    use coceira()
+    when
+        questionsdoenca.coceirapergunta(2)
+        python engine.get_ke('questionsdoenca', 'hipertrofiaganglionarpergunta').reset()
+        ganglionar()
+
+
+ganglionar
+    use ganglionar()
+    when
+        questionsdoenca.hipertrofiaganglionarpergunta($ans)
+        check $ans in (2, 3)
+        python print("Paciente nao foi diagnosticado com nenhuma doenca")
+
+ganglionar1
+    use ganglionar()
+    when
+        questionsdoenca.hipertrofiaganglionarpergunta(1)
+        python engine.get_ke('questionsdoenca', 'manchapergunta').reset()
+        manchas()
+
+
+parteintensa
+    use parteintensa()
+    when
+        questionsdoenca.hipertrofiaganglionarpergunta(1)
+        python print("Diagnosticado com zika")
+
+parteintensa1
+    use parteintensa()
+    when
+        questionsdoenca.hipertrofiaganglionarpergunta($ans)
+        check $ans in (2, 3)
+        python engine.get_ke('questionsdoenca', 'manchapergunta').reset()
+        manchas()
+
+manchas
+    use manchas()
+    when
+        questionsdoenca.manchapergunta(2)
+        python print("Diagnosticado com zika")
+
+manchas1
+    use manchas()
+    when
+        questionsdoenca.manchapergunta($ans)
+        check $ans in (1, 3)
+        python print("Paciente nao foi diagnosticado com nenhuma doenca")
+
+
+
+#Diagnosticado para Dengue
+
+dicrisia1
+    use dicrisia()
+    when 
+        questionsdoenca.discrasiahemorragicapergunta(1)
+        python engine.get_ke('questionsdoenca','frequenciadormusculospergunta').reset()
+        dormusculosdengue()
+
+dormusculosdengue
+    use dormusculosdengue()
+    when
+        questionsdoenca.frequenciadormusculospergunta(1)
+        python engine.get_ke('questionsdoenca', 'frequenciadorarticulacaopergunta').reset()
+        dorarticulacao()
+
+dorarticulacao
+    use dorarticulacao()
+    when
+        questionsdoenca.frequenciadorarticulacaopergunta(3)
+        python print("Paciente diagnosticado com Dengue")
+
+dorarticulacao1
+    use dorarticulacao()
+    when
+        questionsdoenca.frequenciadorarticulacaopergunta($ans)
+        check $ans in (1, 2)
+        python engine.get_ke('questionsdoenca', 'febrepergunta').reset()
+        febredengue()
+
+
+
+febredengue
+    use febredengue()
+    when
+        questionsdoenca.febrepergunta(1)
+        python print("Paciente diagnosticado com Dengue")
+
+febredengue1
+    use febredengue()
+    when
+        questionsdoenca.febredengue($ans)
+        check $ans in (2, 3)
+        python engine.get_ke('questionsdoenca', 'intensidadedorarticularpergunta').reset()
+        intensidadedorarticular()
+
+intensidadedorarticular
+    use intensidadedorarticular()
+    when
+        questionsdoenca.intensidadedorarticularpergunta(3)
+        python print("Paciente diagnosticado com Dengue")
+
+intensidadedorarticular1
+    use intensidadedorarticular()
+    when
+        questionsdoenca.intensidadedorarticularpergunta($ans)
+        check $ans in (1, 2)
+        python print("Paciente diagnosticado com Chinkungunya")
+
+
+dormusculosdengue1
+    use dormusculosdengue()
+    when
+        questionsdoenca.frequenciadormusculospergunta($ans)
+        check $ans in (2, 3)
+        python engine.get_ke('questionsdoenca', 'edemadaarticulacaopergunta').reset()
+        edema()
+
+edema
+    use edema()
+    when
+        questionsdoenca.edemadaarticulacaopergunta(False)
+        python engine.get_ke('questionsdoenca', 'intensidadedorarticularpergunta')
+        partintensidadedorarticulacao()
+
+edema1
+    use edema()
+    when
+        questionsdoenca.edemadaarticulacaopergunta(True)
+        python engine.get_ke('questionsdoenca', 'intensidadedorarticularpergunta')
+        intentarticulacao()
+
+
+
+partintensidadedorarticulacao
+    use partintensidadedorarticulacao()
+    when
+        questionsdoenca.intensidadedorarticularpergunta(3)
+        python print("Paciente diagnosticado com Dengue")
+
+
+partintensidadedorarticulacao1
+    use partintensidadedorarticulacao()
+    when
+        questionsdoenca.intensidadedorarticularpergunta($ans)
+        check $ans in (1, 2)
+        python engine.get_ke('questionsdoenca', 'frequenciadorarticulacaopergunta').reset()
+        frequencia()
+
+
+frequencia 
+    use frequencia()
+    when
+        questionsdoenca.frequenciadorarticulacaopergunta(3)
+        python print("Paciente diagnosticado com Dengue")
+
+frequencia1
+    use frequencia()
+    when
+        questionsdoenca.frequenciadorarticulacaopergunta($ans)
+        check $ans in (1, 2)
+        python print("Paciente diagnosticado com Chinkungunya")
+
+
+intentarticulacao
+    use intentarticulacao()
+    when
+        questionsdoenca.intensidadedorarticularpergunta($ans)
+        check $ans in (1, 2)
+        python print("Paciente diagnosticado com Chinkungunya")
+
+
+intentarticulacao1
+    use intentarticulacao()
+    when
+        questionsdoenca.intensidadedorarticularpergunta(3)
+        python engine.get_ke('questionsdoenca', 'frequenciadorarticulacaopergunta').reset()
+        frequencia()
+
+
+# Diagnosticado para Chinkungunya
+dicrisia2
+    use dicrisia()
+    when
+        questionsdoenca.discrasiahemorragicapergunta(2)
+        python engine.get_ke('questionsdoenca', 'intensidadedormusculospergunta').reset()
+        intensidadedormusculos()
+
+intensidadedormusculos
+    use intensidadedormusculos()
+    when
+        questionsdoenca.intensidadedormusculospergunta($ans)
+        check $ans in (2, 3)
+        python engine.get_ke('questionsdoenca', 'edemadaarticulacaopergunta').reset()
+        edemas()
+
+edemas
+    use edemas()
+    when
+        questionsdoenca.edemadaarticulacaopergunta(True)
+        python print("Paciente diagnosticado com Chinkungunya")
+
+
+edemas1
+    use edemas()
+    when
+        questionsdoenca.edemadaarticulacaopergunta(False)
+        python engine.get_ke('questionsdoenca', 'intensidadedorarticularpergunta').reset()
+        dorarticular()
+
+dorarticular
+    use dorarticular()
+    when
+        questionsdoenca.intensidadedorarticularpergunta($ans)
+        check $ans in (1, 2)
+        python print("Paciente diagnosticado com Chinkungunya")
+
+dorarticular1
+    use dorarticular()
+    when
+        questionsdoenca.intensidadedorarticularpergunta(3)
+        python engine.get_ke('questionsdoenca', 'frequenciadorarticulacaopergunta').reset()
+        finalfrequenciaarticular()
+
+finalfrequenciaarticular
+    use finalfrequenciaarticular()
+    when 
+        questionsdoenca.frequenciadorarticulacaopergunta(3)
+        python print("Paciente diagnosticado com Dengue")
+
+finalfrequenciaarticular1
+    use finalfrequenciaarticular()
+    when
+        questionsdoenca.frequenciadorarticulacaopergunta($ans)
+        check $ans in (1, 2)
+        python print("Paciente Diagnosticado com Chinkungunya")
+
+
+intensidadedormusculos1
+    use intensidadedormusculos()
+    when
+        questionsdoenca.intensidadedormusculospergunta(1)
+        python engine.get_ke('questionsdoenca', 'frequenciadorarticulacaopergunta').reset()
+        freq()
+
+freq
+    use freq()
+    when
+        questionsdoenca.frequenciadorarticulacaopergunta(3)
+        python engine.get_ke('questionsdoenca', 'febrepergunta').reset()
+        febrechic()
+
+febrechic
+    use febrechic()
+    when
+        questionsdoenca.febrepergunta(1)
+        python print("Paciente diagnosticado com Dengue")
+
+febrechic1
+    use febrechic()
+    when
+        questionsdoenca.febrepergunta($ans)
+        check $ans in (2, 3)
+        python engine.get_ke('questionsdoenca', 'intensidadedorarticularpergunta')
+        dorart()
+
+freq1
+    use freq()
+    when
+        questionsdoenca.frequenciadorarticulacaopergunta($ans)
+        check $ans in (1, 2)
+        python engine.get_ke('questionsdoenca', 'febrepergunta').reset()
+        febree()
+
+febree
+    use febree()
+    when
+        questionsdoenca.febrepergunta(3)
+        python print("Paciente diagnosticado com Chinkungunya")
+
+febre1
+    use febree()
+    when
+        questionsdoenca.febrepergunta($ans)
+        check $ans in (1, 2)
+        python engine.get_ke('questionsdoenca', 'intensidadedorarticularpergunta')
+        dorart()
+
+dorart
+    use dorart()
+    when
+        questionsdoenca.intensidadedorarticularpergunta(3)
+        python print("Paciente diagnosticado com Dengue")
+
+
+dorart1
+    use dorart()
+    when
+        questionsdoenca.intensidadedorarticularpergunta($ans)
+        check $ans in (1, 2)
+        python print("Paciente diagnosticado com Chinkungunya")
+
