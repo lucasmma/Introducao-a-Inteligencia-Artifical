@@ -88,6 +88,8 @@ model.add(Dropout(0.5))
 model.add(Dense(3, activation='softmax'))
 model.compile(optimizers.rmsprop(lr=0.0001, decay=1e-6),loss="categorical_crossentropy",metrics=["accuracy"])
 
+model.summary()
+
 
 #fitting model
 STEP_SIZE_TRAIN=train_generator.n // train_generator.batch_size
